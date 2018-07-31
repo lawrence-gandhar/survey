@@ -28,4 +28,4 @@ class CustomUserAdmin(admin.ModelAdmin):
     pass
 
     class Media:
-        js = ('admin_js/common.js',)  
+        js = ('admin_js/usermodel.js',)  

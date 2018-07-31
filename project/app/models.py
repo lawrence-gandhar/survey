@@ -30,7 +30,7 @@ class CustomUser(AbstractUser):
     #
     # Title Choices
     #
-    title_choices = (('Mr','Mr'),('Mrs','Mrs'),('Miss','Miss'),('Ms','Ms'),('Sir','Sir'))
+    title_choices = (('Mr','Mr'),('Mrs','Mrs'),('Miss','Miss'),('Ms','Ms'),('Sir','Sir'),('Dr','Dr'))
 
     #
     # Gender Choices
@@ -43,11 +43,11 @@ class CustomUser(AbstractUser):
     #
     # Marital Status Choices
     #
-    marital_status_choices = (("Married", "Married"),
+    marital_status_choices = (("Single", "Single"),
+                                ("Married", "Married"),
                                 ("Divorced", "Divorced"),
                                 ("Separated", "Separated"),
                                 ("Living With Partners", "Living With Partners"),
-                                ("Single", "Single"),
                                 ("Widowed", "Widowed"))
                                 
     #
@@ -56,7 +56,7 @@ class CustomUser(AbstractUser):
     role = models.ForeignKey('Roles', db_index = True, null = True, blank = True, on_delete = models.SET_NULL,)
     dob = models.DateField(null = True, blank = True, db_index = True,)
     phone = models.CharField(max_length = 100, blank = True, null = True,)
-    title = models.CharField(max_length = 4, db_index = True, blank = True, null = True, choices = title_choices,)
+    title = models.CharField(max_length = 4, db_index = True, blank = True, null = True, choices = title_choices, default = 'Mr')
     gender = models.CharField(max_length = 1, db_index = True, default = MALE, choices = gender_choices, blank = True, null = True,)
     marital_status = models.CharField(max_length = 40, db_index = True, default = 'Single', blank = True, null = True, choices = marital_status_choices,)
     email = models.EmailField(blank = True, null = True, db_index = True,)
